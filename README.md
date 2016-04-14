@@ -30,27 +30,30 @@ forks:
 Build and install
 -----------------
 
-Our test routines know of three ways in which to compile a project
-from source. You're welcome to use either of them, but we have a
+Our test routines are flexible as to how to compile a project
+from source. You're welcome to use any means necessary, but we have a
 slight preference if you use `waf` as in the original blockhash
-repository. The ways in which we can compile a source is:
+repository. In your repository, you must have a file called
+`videorooter.conf` which is sourced by our test scripts to set some
+variables and define functions for building and executing.
 
- * `waf configure && waf` (if there's a `waf` file)
- * `make` (if there's a `Makefile`)
- * `prepare && make` (if there's a `prepare` file)
+You can look at the `videorooter.conf` included in this repository for
+inspiration. The following functions must exist:
+
+ * `compile` called without arguments to compile a prestine source
+ * `calc` called with (image, movie) as the first argument and a
+   filename as the second argument, to calculate the fingerprint of a
+   file.
+
+The following variables must be defined:
+
+ * `images` set to 1 if the repository support images
+ * `movies` set to 1 if the repository support movies
 
 Usage
 -----
 
-For consistency, it's important your software always create a
-binary in the `build/` directory named `blockhash`. It should accept
-as arguments a list of images.
-
-If your fork also work for videos, it should (additionally or instead
-of) create a binary called `blockhash_video`. The existance of either
-`blockhash` or `blockhash_video` will determine which tests to run.
-
-The return value (on stdout) from the binary should always be the name
+The return value (on stdout) from a call to `calc` should always be the name
 of the input file followed by whitespace (\t) followed by the hash
 encoded in hexadecimal. There's no length requirement for the hash.
 
