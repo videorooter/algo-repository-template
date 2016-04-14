@@ -32,23 +32,23 @@ Build and install
 
 Our test routines know of three ways in which to compile a project
 from source. You're welcome to use either of them, but we have a
-slight preference if you use `waf' as in the original blockhash
+slight preference if you use `waf` as in the original blockhash
 repository. The ways in which we can compile a source is:
 
- * `waf configure && waf' (if there's a `waf' file)
- * `make` (if there's a `Makefile')
- * `prepare && make` (if there's a `prepare' file)
+ * `waf configure && waf` (if there's a `waf` file)
+ * `make` (if there's a `Makefile`)
+ * `prepare && make` (if there's a `prepare` file)
 
 Usage
 -----
 
-For consistency, it's important that your software always create a
-binary in the `build/' directory named `blockhash'. It should accept
+For consistency, it's important your software always create a
+binary in the `build/` directory named `blockhash`. It should accept
 as arguments a list of images.
 
 If your fork also work for videos, it should (additionally or instead
-of) create a binary called `blockhash_video'. The existance of either
-`blockhash' or `blockhash_video' will determine which tests to run.
+of) create a binary called `blockhash_video`. The existance of either
+`blockhash` or `blockhash_video` will determine which tests to run.
 
 The return value (on stdout) from the binary should always be the name
 of the input file followed by whitespace (\t) followed by the hash
