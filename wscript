@@ -1,4 +1,4 @@
-APPNAME = 'blockhash'
+APPNAME = 'app-repository-template'
 VERSION = '0.1'
 
 top = '.'
